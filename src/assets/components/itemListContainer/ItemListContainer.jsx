@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = ({ greeting}) => {
   return (
     <div>
       <h1>Hola!! Bienvenido {greeting}</h1>
@@ -9,6 +9,5 @@ const ItemListContainer = ({ greeting }) => {
       <button>Ver Productos</button>
     </div>
   );
-}
-
+};
 export default ItemListContainer;
