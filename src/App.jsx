@@ -10,7 +10,9 @@ function App() {
   return (
     <>
       <NavBar />
+      <div className ="hero">
       <ItemListContainer greeting='a nuestra web' />
+      </div>
       <div className="card-container">
         {data.map(celular => (
           <Card key={celular.id} celular={celular} />

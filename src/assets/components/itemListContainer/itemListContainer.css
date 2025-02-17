@@ -1,7 +1,29 @@
+/* ItemListContainer.css */
+
+/* App.css o un archivo CSS específico para el hero */
+
+.hero {
+  padding: 80px 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+/* App.css o card-container.css */
+
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px;
-  }
-  
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  margin: 30px; 
+  gap: 20px; 
+}
+/* App.css o card-container.css */
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  margin: 30px; 
+  gap: 20px;
+}

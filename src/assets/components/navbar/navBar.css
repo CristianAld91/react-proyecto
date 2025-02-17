@@ -1,21 +1,4 @@
 /* navBar.css */
-
-.MuiAppBar-root {
-    width: 100%; 
-    position: fixed;
-    top: 0; 
-    left: 0; 
-    z-index: 1000; 
-}
-
-
-.MuiContainer-root {
-    max-width: 100%; 
-    padding-left: 0; 
-    padding-right: 0;
-}
-
-
 .MuiToolbar-root {
     display: flex;
     justify-content: space-between;
