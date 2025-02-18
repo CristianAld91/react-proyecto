@@ -13,7 +13,7 @@ function App() {
       <div className ="hero">
       <ItemListContainer greeting='a nuestra web' />
       </div>
-      <div className="card-container">
+      <div className="cardContainer">
         {data.map(celular => (
           <Card key={celular.id} celular={celular} />
         ))}

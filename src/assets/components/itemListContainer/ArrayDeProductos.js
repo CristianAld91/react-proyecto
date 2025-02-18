@@ -1,42 +1,26 @@
 export const data = [
     {
         id: 1,
-        nombre: "Samsung Galaxy S21",
-        precio: 799,
-        descripcion: "Un teléfono inteligente con características impresionantes.",
+        nombre: "Samsung Galaxy S25",
+        precio: 999,
+        descripcion: "La última versión de la serie Galaxy S, con mejoras en la cámara y rendimiento.",
         stock: 30,
         nuevaColeccion: true,
         imagenes: {
-            imgProducto: "samsung-galaxy-s21.png",
-            imgAgotado: "soldOut.png",
-            imgEstrella: "estrella.png",
+            imgProducto: "src/assets/img/s25.png"
         },
     },
     {
         id: 2,
-        nombre: "iPhone 13",
-        precio: 999,
-        descripcion: "El último modelo de Apple con tecnología avanzada.",
+        nombre: "iPhone 15",
+        precio: 1099,
+        descripcion: "El nuevo modelo de Apple, con mejoras en la duración de la batería y capacidades de fotografía.",
         stock: 20,
         nuevaColeccion: true,
         imagenes: {
-            imgProducto: "iphone-13.png",
-            imgAgotado: "soldOut.png",
-            imgEstrella: "estrella.png",
+            imgProducto: "src/assets/img/iphone15.png"
+
         },
-    },
-    {
-        id: 3,
-        nombre: "Google Pixel 6",
-        precio: 599,
-        descripcion: "Un teléfono enfocado en la fotografía y la inteligencia artificial.",
-        stock: 25,
-        nuevaColeccion: false,
-        imagenes: {
-            imgProducto: "google-pixel-6.png",
-            imgAgotado: "soldOut.png",
-            imgEstrella: "estrella.png",
-            cohete: 'animat-rocket-color.gif'
-        },
-    },
+    }
+
 ];
