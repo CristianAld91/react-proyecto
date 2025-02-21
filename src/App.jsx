@@ -2,9 +2,9 @@ import React from 'react';
 import NavBar from './assets/components/navbar/NavBar';
 import './App.css';
 import ItemListContainer from './assets/components/itemListContainer/ItemListContainer';
-import { data } from './assets/components/itemListContainer/ArrayDeProductos'; 
-import Card from './assets/components/itemListContainer/Card'; 
+import Card from './assets/components/itemListContainer/ItemList'; 
 import './assets/components/itemListContainer/ItemListContainer.css'
+import ItemList from './assets/components/itemListContainer/ItemList';
 
 function App() {
   return (
@@ -14,9 +14,7 @@ function App() {
       <ItemListContainer greeting='a nuestra web' />
       </div>
       <div className="cardContainer">
-        {data.map(celular => (
-          <Card key={celular.id} celular={celular} />
-        ))}
+       <ItemList/>
       </div>
     </>
   );
