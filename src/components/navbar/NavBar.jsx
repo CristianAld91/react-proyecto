@@ -1,3 +1,4 @@
+// ResponsiveAppBar.jsx
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,8 +13,13 @@ import MenuItem from '@mui/material/MenuItem';
 import CardWidget from '../carWidget/CardWidget';
 import logo from '/src/assets/img/celljr.png'; // Asegúrate de que la ruta sea correcta
 import '../navbar/navBar.css'; // Importa el archivo CSS
+import { NavLink } from 'react-router-dom'; // Importa NavLink
 
-const pages = ['Home', 'Celulares', 'Tablets'];
+const pages = [
+  { name: 'Home', path: '/' },
+  { name: 'Celulares', path: '/celulares' },
+  { name: 'Tablets', path: '/tablets' },
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -83,8 +89,10 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <NavLink to={page.path} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>
@@ -92,13 +100,14 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'right' }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block', fontFamily: 'Arial, sans-serif', fontWeight: 1000, margin: '20px' }}
-              >
-                {page}
-              </Button>
+              <NavLink key={page.name} to={page.path} style={{ textDecoration: 'none' }}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block', fontFamily: 'Arial, sans-serif', fontWeight: 1000, margin: '20px' }}
+                >
+                  {page.name}
+                </Button>
+              </NavLink>
             ))}
           </Box>
           <CardWidget sx={{ ml: 2 }} />
