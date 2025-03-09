@@ -1,39 +1,20 @@
-// ItemListContainer.jsx
-import React, { useEffect, useState } from 'react';
-import ItemList from './ItemList'; 
+import useFetch from '../customHooks/useFetch'; 
+import ItemList from './ItemList';
 
-const ItemListContainer = ({ greeting }) => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+const ItemListContainer = () => { 
+  const { data, loading, error } = useFetch('/productos/productos.json');
 
-  useEffect(() => {
-    const fetchProductos = async () => {
-      try {
-        const response = await fetch('/src/assets/productos/productos.json'); 
-        if (!response.ok) {
-          throw new Error('Error al cargar los productos');
-        }
-        const productos = await response.json();
-        setData(productos);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  if (loading) {
+    return <div>Cargando...</div>;
+  }
+  if (error) {
+    return <div>ERROR: {error.message}</div>; 
+  }
 
-    fetchProductos();
-  }, []);
+  console.log(data); // Asegúrate de que esto esté aquí
 
   return (
-    <div>
-      <h1>{greeting}</h1>
-      {loading ? (
-        <p>Cargando productos...</p>
-      ) : (
-        <ItemList data={data} /> 
-      )}
-    </div>
+    <ItemList data={data} />
   );
 };
 

@@ -7,7 +7,7 @@
         "stock": 30,
         "nuevaColeccion": true,
         "imagenes": {
-            "imgProducto": "src/assets/img/s25.png"
+            "imgProducto": "/src/assets/img/s25.png"
         }
     },
     {
@@ -18,7 +18,7 @@
         "stock": 20,
         "nuevaColeccion": true,
         "imagenes": {
-            "imgProducto": "src/assets/img/iphone15.png"
+            "imgProducto": "/src/assets/img/iphone15.png"
         }
     }
 ]

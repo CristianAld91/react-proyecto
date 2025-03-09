@@ -11,14 +11,14 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import CardWidget from '../carWidget/CardWidget';
-import logo from '/src/assets/img/celljr.png'; // Asegúrate de que la ruta sea correcta
-import '../navbar/navBar.css'; // Importa el archivo CSS
-import { NavLink } from 'react-router-dom'; // Importa NavLink
+import logo from '/src/assets/img/celljr.png';
+import '../navbar/navBar.css';
+import { NavLink } from 'react-router-dom';
 
 const pages = [
   { name: 'Home', path: '/' },
-  { name: 'Celulares', path: '/celulares' },
-  { name: 'Tablets', path: '/tablets' },
+  { name: 'Celulares', path: '/category/celulares' },
+  { name: 'Tablets', path: '/category/tablets' },
 ];
 
 function ResponsiveAppBar() {
@@ -33,7 +33,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="fixed" className="MuiAppBar-root">
+    <AppBar position="fixed">
       <Container maxWidth={false}>
         <Toolbar disableGutters>
           <img 
@@ -45,7 +45,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
