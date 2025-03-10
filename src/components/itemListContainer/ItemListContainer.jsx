@@ -1,7 +1,9 @@
 import useFetch from '../customHooks/useFetch'; 
-import ItemList from './ItemList';
+import ItemList from '../itemList/ItemList';
+import { useNavigate } from 'react-router-dom';
 
 const ItemListContainer = () => { 
+  const navigate = useNavigate();
   const { data, loading, error } = useFetch('/productos/productos.json');
 
   if (loading) {
@@ -11,7 +13,7 @@ const ItemListContainer = () => {
     return <div>ERROR: {error.message}</div>; 
   }
 
-  console.log(data); // Asegúrate de que esto esté aquí
+  console.log(data); 
 
   return (
     <ItemList data={data} />

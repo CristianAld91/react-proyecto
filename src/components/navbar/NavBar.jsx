@@ -1,4 +1,3 @@
-// ResponsiveAppBar.jsx
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -36,30 +35,32 @@ function ResponsiveAppBar() {
     <AppBar position="fixed">
       <Container maxWidth={false}>
         <Toolbar disableGutters>
-          <img 
-            src={logo} 
-            alt="Logo" 
-            style={{ width: '100px', height: '100px', marginRight: '5px', marginTop: '0px', marginLeft:'25px'}} 
-          />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Arial, sans-serif',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'white',
-              textDecoration: 'none',
-              flexGrow: 1,
-              textAlign: 'center',
-            }}
-          >
-            Cell Jr.
-          </Typography>
+          <NavLink to="/" style={{ marginRight: '5px' }}>
+            <img 
+              src={logo} 
+              alt="Logo" 
+              style={{ width: '100px', height: '100px', marginTop: '0px', marginLeft: '25px' }} 
+            />
+          </NavLink>
+
+          <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit', flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'Arial, sans-serif',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'white',
+                textDecoration: 'none',
+                textAlign: 'center',
+              }}
+            >
+              Cell Jr.
+            </Typography>
+          </NavLink>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center' }}>
             <IconButton
