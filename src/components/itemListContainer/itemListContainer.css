@@ -50,14 +50,14 @@
   color: #777;
 }
 .card-stock {
-  background-color: #f0f8ff; /* Color de fondo suave */
-  color: #333; /* Color del texto */
-  padding: 10px; /* Espaciado interno */
-  border: 1px solid #007BFF; /* Borde azul */
-  border-radius: 5px; /* Bordes redondeados */
-  font-weight: bold; /* Negrita para el texto */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  margin-top: 10px; /* Espacio superior */
+  background-color: #f0f8ff; 
+  color: #333; 
+  padding: 10px; 
+  border: 1px solid #007BFF; 
+  border-radius: 5px;
+  font-weight: bold; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  margin-top: 10px; 
 }
 
 .loading, .error {
