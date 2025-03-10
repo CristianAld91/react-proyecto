@@ -13,12 +13,12 @@ import CardWidget from '../carWidget/CardWidget';
 import logo from '/src/assets/img/celljr.png';
 import '../navbar/navBar.css';
 import { NavLink } from 'react-router-dom';
-
 const pages = [
   { name: 'Home', path: '/' },
-  { name: 'Celulares', path: '/category/celulares' },
-  { name: 'Tablets', path: '/category/tablets' },
+  { name: 'Celulares', path: '/category/celular' }, 
+  { name: 'Tablets', path: '/category/tablet' }, 
 ];
+
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

@@ -6,6 +6,7 @@
         "descripcion": "La última versión de la serie Galaxy S, con mejoras en la cámara y rendimiento excepcional.",
         "stock": 30,
         "nuevaColeccion": true,
+        "categoria": "celular",
         "imagenes": {
             "imgProducto": "/src/assets/img/s25.png"
         },
@@ -29,6 +30,7 @@
         "descripcion": "El nuevo modelo de Apple, con mejoras en la duración de la batería y capacidades avanzadas de fotografía.",
         "stock": 20,
         "nuevaColeccion": true,
+        "categoria": "celular",
         "imagenes": {
             "imgProducto": "/src/assets/img/iphone15.png"
         },
@@ -52,6 +54,7 @@
         "descripcion": "Un smartphone accesible con buena cámara y rendimiento adecuado para tareas diarias.",
         "stock": 25,
         "nuevaColeccion": true,
+        "categoria": "celular",
         "imagenes": {
             "imgProducto": "/src/assets/img/MototorolaA15.png"
         },
@@ -75,6 +78,7 @@
         "descripcion": "Rendimiento fluido y carga rápida, ideal para los amantes de la tecnología a buen precio.",
         "stock": 15,
         "nuevaColeccion": true,
+        "categoria": "celular",
         "imagenes": {
             "imgProducto": "/src/assets/img/Mototorolag24png.png"
         },
@@ -98,6 +102,7 @@
         "descripcion": "Un smartphone con excelente relación calidad-precio, ideal para el uso diario.",
         "stock": 10,
         "nuevaColeccion": true,
+        "categoria": "celular",
         "imagenes": {
             "imgProducto": "/src/assets/img/Xiaomi Readmi13C.png"
         },
@@ -121,6 +126,7 @@
         "descripcion": "Un dispositivo enfocado en la fotografía y entretenimiento multimedia a un precio asequible.",
         "stock": 5,
         "nuevaColeccion": true,
+        "categoria": "celular",
         "imagenes": {
             "imgProducto": "/src/assets/img/zte40.png"
         },
@@ -144,6 +150,7 @@
         "descripcion": "Diseño elegante y rendimiento sólido, ideal para usuarios exigentes que buscan calidad.",
         "stock": 8,
         "nuevaColeccion": true,
+        "categoria": "celular",
         "imagenes": {
             "imgProducto": "/src/assets/img/Xiaomi Redmi A3.png"
         },
@@ -167,6 +174,7 @@
         "descripcion": "Innovador en fotografía con un diseño moderno y rendimiento sólido para todos los días.",
         "stock": 12,
         "nuevaColeccion": true,
+        "categoria": "celular",
         "imagenes": {
             "imgProducto": "/src/assets/img/Xiaomi-15.png"
         },
@@ -180,6 +188,102 @@
                 "cargaRapida": "Sí"
             },
             "procesador": "Qualcomm Snapdragon 695",
+            "ram": "6 GB"
+        }
+    },
+    {
+        "id": 9,
+        "nombre": "iPad Pro 11",
+        "precio": 799,
+        "descripcion": "Potente tablet con pantalla Liquid Retina, ideal para profesionales.",
+        "stock": 15,
+        "nuevaColeccion": true,
+        "categoria": "tablet",
+        "imagenes": {
+            "imgProducto": "/src/assets/img/iPadPro11.png"
+        },
+        "especificaciones": {
+            "camara": {
+                "mp": 12,
+                "tipo": "Doble cámara"
+            },
+            "bateria": {
+                "capacidad": "7538 mAh",
+                "cargaRapida": "Sí"
+            },
+            "procesador": "Apple M1",
+            "ram": "8 GB"
+        }
+    },
+    {
+        "id": 10,
+        "nombre": "Samsung Galaxy Tab S8",
+        "precio": 699,
+        "descripcion": "Tablet premium con S Pen incluido, ideal para productividad.",
+        "stock": 10,
+        "nuevaColeccion": true,
+        "categoria": "tablet",
+        "imagenes": {
+            "imgProducto": "/src/assets/img/SamsungGalaxyTab S8.png"
+        },
+        "especificaciones": {
+            "camara": {
+                "mp": 13,
+                "tipo": "Doble cámara"
+            },
+            "bateria": {
+                "capacidad": "8000 mAh",
+                "cargaRapida": "Sí"
+            },
+            "procesador": "Snapdragon 8 Gen 1",
+            "ram": "8 GB"
+        }
+    },
+    {
+        "id": 11,
+        "nombre": "Lenovo Tab P11",
+        "precio": 299,
+        "descripcion": "Tablet con buena relación calidad-precio, ideal para entretenimiento.",
+        "stock": 20,
+        "nuevaColeccion": true,
+        "categoria": "tablet",
+        "imagenes": {
+            "imgProducto": "/src/assets/img/lenovotabp11.png"
+        },
+        "especificaciones": {
+            "camara": {
+                "mp": 8,
+                "tipo": "Simple"
+            },
+            "bateria": {
+                "capacidad": "7500 mAh",
+                "cargaRapida": "No"
+            },
+            "procesador": "Qualcomm Snapdragon 662",
+            "ram": "4 GB"
+        }
+    },
+    {
+        "id": 12,
+        "nombre": "Huawei MatePad 11",
+        "precio": 399,
+        "descripcion": "Tablet con pantalla de 120Hz y gran rendimiento para el trabajo y el ocio.",
+        "stock": 15,
+        "nuevaColeccion": true,
+        "categoria": "tablet",
+        "imagenes": {
+            "imgProducto": "/src/assets/img/huaweimatepad11.png"
+        },
+        "especificaciones": {
+            "camara": {
+                "mp": 13,
+                "tipo": "Doble cámara"
+            },
+            "bateria": {
+                "capacidad": "7250 mAh",
+                "cargaRapida": "Sí"
+            },
+            "procesador": "Qualcomm Snapdragon 865",
             "ram": "6 GB"
         }
     }
