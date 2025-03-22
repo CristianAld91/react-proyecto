@@ -10,18 +10,20 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import CardWidget from '../carWidget/CardWidget';
+import CartView from '../cardView/CardView';
 import logo from '/src/assets/img/celljr.png';
 import '../navbar/navBar.css';
 import { NavLink } from 'react-router-dom';
+
 const pages = [
   { name: 'Home', path: '/' },
-  { name: 'Celulares', path: '/category/celular' }, 
-  { name: 'Tablets', path: '/category/tablet' }, 
+  { name: 'Celulares', path: '/category/celular' },
+  { name: 'Tablets', path: '/category/tablet' },
 ];
 
-
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ cartItems, removeFromCart }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [showCart, setShowCart] = React.useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -30,6 +32,12 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const handleCartClick = () => {
+    setShowCart((prev) => !prev);
+  };
+
+  const totalItems = (cartItems || []).reduce((acc, item) => acc + item.cantidad, 0);
 
   return (
     <AppBar position="fixed">
@@ -65,7 +73,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'center' }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -111,8 +119,17 @@ function ResponsiveAppBar() {
               </NavLink>
             ))}
           </Box>
-          <CardWidget sx={{ ml: 2 }} />
+          
+          <IconButton
+            size="large"
+            aria-label="show cart items"
+            color="inherit"
+            onClick={handleCartClick}
+          >
+            <CardWidget cartItems={cartItems} />
+          </IconButton>
         </Toolbar>
+        {showCart && <CartView cartItems={cartItems} removeFromCart={removeFromCart} />}
       </Container>
     </AppBar>
   );

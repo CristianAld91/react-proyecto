@@ -3,7 +3,7 @@ import useFetch from '../customHooks/useFetch';
 import ItemList from '../itemList/ItemList';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const ItemListContainer = () => { 
+const ItemListContainer = ({ addToCart }) => { // Agregar addToCart aquí
   const navigate = useNavigate();
   const { categoryId } = useParams(); 
   const { data, loading, error } = useFetch('/productos/productos.json');
@@ -27,7 +27,7 @@ const ItemListContainer = () => {
   const filteredData = categoryId ? data.filter(item => item.categoria === categoryId) : data;
 
   return (
-    <ItemList data={filteredData} loading={isLoading} />
+    <ItemList data={filteredData} addToCart={addToCart} /> // Pasar addToCart aquí
   );
 };
 

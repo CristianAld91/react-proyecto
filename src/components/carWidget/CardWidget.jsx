@@ -2,10 +2,12 @@ import * as React from 'react';
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const CardWidget = () => { 
+const CardWidget = ({ cartItems }) => { 
+  const totalItems = (cartItems || []).reduce((acc, item) => acc + item.cantidad, 0);
+
   return (
     <Badge 
-      badgeContent={10} 
+      badgeContent={totalItems} 
       color="error"
       sx={{ 
         '& .MuiBadge-dot': { backgroundColor: 'orange' }, 

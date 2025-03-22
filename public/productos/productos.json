@@ -8,21 +8,22 @@
         "nuevaColeccion": true,
         "categoria": "celular",
         "imagenes": {
-            "imgProducto": "/src/assets/img/s25.png"
+          "imgProducto": "https://i.ibb.co/mF01y2YV/s25.png"
         },
         "especificaciones": {
-            "camara": {
-                "mp": 108,
-                "tipo": "Triple cámara"
-            },
-            "bateria": {
-                "capacidad": "4500 mAh",
-                "cargaRapida": "Sí"
-            },
-            "procesador": "Exynos 2200",
-            "ram": "8 GB"
+          "camara": {
+            "mp": 108,
+            "tipo": "Triple cámara"
+          },
+          "bateria": {
+            "capacidad": "4500 mAh",
+            "cargaRapida": "Sí"
+          },
+          "procesador": "Exynos 2200",
+          "ram": "8 GB"
         }
-    },
+      },
+      
     {
         "id": 2,
         "nombre": "iPhone 15",
@@ -32,7 +33,7 @@
         "nuevaColeccion": true,
         "categoria": "celular",
         "imagenes": {
-            "imgProducto": "/src/assets/img/iphone15.png"
+            "imgProducto": "https://i.ibb.co/tpqkPY77/iphone15.png"
         },
         "especificaciones": {
             "camara": {
@@ -56,7 +57,7 @@
         "nuevaColeccion": true,
         "categoria": "celular",
         "imagenes": {
-            "imgProducto": "/src/assets/img/MototorolaA15.png"
+            "imgProducto": "https://i.ibb.co/7xzYFh7F/Mototorola-A15.png"
         },
         "especificaciones": {
             "camara": {
@@ -80,7 +81,7 @@
         "nuevaColeccion": true,
         "categoria": "celular",
         "imagenes": {
-            "imgProducto": "/src/assets/img/Mototorolag24png.png"
+            "imgProducto": "https://i.ibb.co/HDkcbdnJ/Mototorolag24png.png"
         },
         "especificaciones": {
             "camara": {
@@ -104,7 +105,7 @@
         "nuevaColeccion": true,
         "categoria": "celular",
         "imagenes": {
-            "imgProducto": "/src/assets/img/Xiaomi Readmi13C.png"
+            "imgProducto": "https://i.ibb.co/d01HkfTT/Xiaomi-Readmi13-C.png"
         },
         "especificaciones": {
             "camara": {
@@ -128,7 +129,7 @@
         "nuevaColeccion": true,
         "categoria": "celular",
         "imagenes": {
-            "imgProducto": "/src/assets/img/zte40.png"
+            "imgProducto": "https://i.ibb.co/FLnR2LS3/zte40.png"
         },
         "especificaciones": {
             "camara": {
@@ -152,7 +153,7 @@
         "nuevaColeccion": true,
         "categoria": "celular",
         "imagenes": {
-            "imgProducto": "/src/assets/img/Xiaomi Redmi A3.png"
+            "imgProducto": "https://i.ibb.co/Wv3NDyzj/Xiaomi-Redmi-A3.png"
         },
         "especificaciones": {
             "camara": {
@@ -176,7 +177,7 @@
         "nuevaColeccion": true,
         "categoria": "celular",
         "imagenes": {
-            "imgProducto": "/src/assets/img/Xiaomi-15.png"
+            "imgProducto": "https://i.ibb.co/8nqWK6dq/Xiaomi-15.png"
         },
         "especificaciones": {
             "camara": {
@@ -200,7 +201,7 @@
         "nuevaColeccion": true,
         "categoria": "tablet",
         "imagenes": {
-            "imgProducto": "/src/assets/img/iPadPro11.png"
+            "imgProducto": "https://i.ibb.co/PzgXMmBj/i-Pad-Pro11.png"
         },
         "especificaciones": {
             "camara": {
@@ -224,7 +225,7 @@
         "nuevaColeccion": true,
         "categoria": "tablet",
         "imagenes": {
-            "imgProducto": "/src/assets/img/SamsungGalaxyTab S8.png"
+            "imgProducto": "https://i.ibb.co/nsGfzNDx/Samsung-Galaxy-Tab-S8.png"
         },
         "especificaciones": {
             "camara": {
@@ -248,7 +249,7 @@
         "nuevaColeccion": true,
         "categoria": "tablet",
         "imagenes": {
-            "imgProducto": "/src/assets/img/lenovotabp11.png"
+            "imgProducto": "https://i.ibb.co/PzhjGF7H/lenovotabp11.png"
         },
         "especificaciones": {
             "camara": {
@@ -272,7 +273,7 @@
         "nuevaColeccion": true,
         "categoria": "tablet",
         "imagenes": {
-            "imgProducto": "/src/assets/img/huaweimatepad11.png"
+            "imgProducto": "https://i.ibb.co/VpYdLxbK/huaweimatepad11.png"
         },
         "especificaciones": {
             "camara": {
