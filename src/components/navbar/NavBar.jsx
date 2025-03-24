@@ -21,7 +21,7 @@ const pages = [
   { name: 'Tablets', path: '/category/tablet' },
 ];
 
-function ResponsiveAppBar({ cartItems, removeFromCart }) {
+function ResponsiveAppBar({ cartItems, removeFromCart }) {//error
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [showCart, setShowCart] = React.useState(false);
 

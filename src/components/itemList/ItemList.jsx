@@ -25,10 +25,12 @@ const ItemList = ({ data, addToCart }) => {
   };
 
   const handleAddToCart = (producto) => {
-    const quantity = quantities[producto.id] || 1;
+    const quantity = quantities[producto.id] || 1; // Usar la cantidad seleccionada
     if (producto.stock >= quantity) {
-      addToCart({ ...producto, cantidad: quantity }); // Agregar al carrito
-      setQuantities(prev => ({ ...prev, [producto.id]: 1 })); // Reiniciar cantidad
+      // Agregar al carrito con la cantidad seleccionada
+      addToCart({ ...producto, cantidad: quantity });
+      // Reiniciar cantidad solo si se agrega correctamente
+      setQuantities(prev => ({ ...prev, [producto.id]: 1 })); // Reiniciar a 1 después de agregar
     } else {
       alert('El producto no está disponible en stock');
     }

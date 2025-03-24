@@ -1,9 +1,9 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemText, IconButton, Typography, Button } from '@mui/material';
+import { Drawer, List, ListItem, ListItemText, IconButton, Typography, Button, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import CardWidget from '../carWidget/CardWidget';
 
-const CartView = ({ cartItems, removeFromCart }) => {
+const CartView = ({ cartItems, removeFromCart, updateQuantity }) => {
   const [cartOpen, setCartOpen] = React.useState(false);
 
   const toggleCart = () => {
@@ -27,6 +27,13 @@ const CartView = ({ cartItems, removeFromCart }) => {
                 <ListItem key={item.id}>
                   <ListItemText 
                     primary={`${item.nombre} - ${item.cantidad} x $${item.precio}`} 
+                  />
+                  <TextField
+                    type="number"
+                    value={item.cantidad}
+                    onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                    style={{ width: '50px', marginRight: '10px' }}
+                    inputProps={{ min: 1 }}
                   />
                   <Button onClick={() => removeFromCart(item.id)}>Eliminar</Button>
                 </ListItem>
