@@ -1,18 +1,55 @@
-import React from 'react';
-import useFetch from '../customHooks/useFetch';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, CardContent, CardMedia, Typography, CircularProgress } from '@mui/material';
-import '../itemDetailContainer/itemDetailContainer.css'; 
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase/client';
+import { Card, CardContent, CardMedia, Typography, CircularProgress, Button } from '@mui/material';
+import './itemDetailContainer.css';
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({ addToCart }) => {
     const { id } = useParams();
-    const { data, loading } = useFetch('/productos/productos.json');
+    const [producto, setProducto] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState(1);
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const docRef = doc(db, 'products', id);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                setProducto({ id: docSnap.id, ...docSnap.data() });
+            } else {
+                console.log("No se encontró el documento!");
+            }
+            setLoading(false);
+        };
+
+        fetchProduct();
+    }, [id]);
 
     if (loading) {
         return <CircularProgress />;
     }
 
-    const producto = data ? data.find(item => item.id === parseInt(id)) : null;
+    const increment = () => {
+        if (quantity < producto.stock) {
+            setQuantity(prev => prev + 1);
+        }
+    };
+
+    const decrement = () => {
+        if (quantity > 1) {
+            setQuantity(prev => prev - 1);
+        }
+    };
+
+    const handleAddToCart = () => {
+        if (producto.stock >= quantity) {
+            addToCart({ ...producto, cantidad: quantity });
+            setQuantity(1); // Reiniciar cantidad después de agregar
+        } else {
+            alert('El producto no está disponible en stock');
+        }
+    };
 
     return (
         <div className="container">
@@ -21,7 +58,7 @@ const ItemDetailContainer = () => {
                     <CardMedia
                         component="img"
                         className="card-media"
-                        image={producto.imagenes.imgProducto}
+                        image={producto.imgProducto}
                         alt={producto.nombre}
                     />
                     <CardContent className="card-content">
@@ -37,26 +74,33 @@ const ItemDetailContainer = () => {
                         <Typography className="card-stock" variant="body2" color="text.secondary">
                             Stock: {producto.stock}
                         </Typography>
-
-                        {/* Detalles adicionales */}
-                        <Typography className="card-details-title" variant="h6" gutterBottom>
-                            Detalles del Producto:
+                        <Typography className="card-capacidad" variant="body2" color="text.secondary">
+                            Capacidad: {producto.capacidad}
                         </Typography>
-                        <Typography className="card-detail" variant="body2" color="text.secondary">
-                            Cámara: {producto.especificaciones.camara.mp} MP ({producto.especificaciones.camara.tipo})
+                        <Typography className="card-cargaRapida" variant="body2" color="text.secondary">
+                            Carga Rápida: {producto.cargaRapida}
                         </Typography>
-                        <Typography className="card-detail" variant="body2" color="text.secondary">
-                            Batería: {producto.especificaciones.bateria.capacidad} mAh
+                        <Typography className="card-procesador" variant="body2" color="text.secondary">
+                            Procesador: {producto.procesador}
                         </Typography>
-                        <Typography className="card-detail" variant="body2" color="text.secondary">
-                            Carga Rápida: {producto.especificaciones.bateria.cargaRapida ? 'Sí' : 'No'}
+                        <Typography className="card-nuevaColeccion" variant="body2" color="text.secondary">
+                            Nueva Colección: {producto.nuevaColeccion ? 'Sí' : 'No'}
                         </Typography>
-                        <Typography className="card-detail" variant="body2" color="text.secondary">
-                            Procesador: {producto.especificaciones.procesador}
-                        </Typography>
-                        <Typography className="card-detail" variant="body2" color="text.secondary">
-                            RAM: {producto.especificaciones.ram}
-                        </Typography>
+                        <div className="quantity-controls">
+                            <Button onClick={decrement}>-</Button>
+                            <input 
+                                type="number" 
+                                min="1" 
+                                max={producto.stock} 
+                                value={quantity} 
+                                readOnly 
+                                aria-label={`Cantidad de ${producto.nombre}`} 
+                            />
+                            <Button onClick={increment}>+</Button>
+                        </div>
+                        <Button variant="contained" color="primary" onClick={handleAddToCart}>
+                            Agregar al carrito
+                        </Button>
                     </CardContent>
                 </Card>
             ) : (

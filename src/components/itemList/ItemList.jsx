@@ -45,7 +45,7 @@ const ItemList = ({ data, addToCart }) => {
           return (
             <div className="card" key={producto.id}>
               <img 
-                src={producto.imagenes.imgProducto} 
+                src={producto.imgProducto} 
                 alt={producto.nombre} 
                 className='card-media' 
                 onClick={() => handleCardClick(producto.id)} 

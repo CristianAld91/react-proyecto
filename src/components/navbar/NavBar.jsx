@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import CardWidget from '../carWidget/CardWidget';
-import CartView from '../cardView/CardView';
+import CartView from '../cardView/CartView';
 import logo from '/src/assets/img/celljr.png';
 import '../navbar/navBar.css';
 import { NavLink } from 'react-router-dom';
@@ -129,7 +129,7 @@ function ResponsiveAppBar({ cartItems, removeFromCart }) {//error
             <CardWidget cartItems={cartItems} />
           </IconButton>
         </Toolbar>
-        {showCart && <CartView cartItems={cartItems} removeFromCart={removeFromCart} />}
+        {showCart && <CartView cartItems={cartItems}/>}
       </Container>
     </AppBar>
   );

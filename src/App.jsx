@@ -1,29 +1,25 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/navbar/NavBar';
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
-import CartView from './components/cardView/CardView'; 
-import { addToCart, removeFromCart, updateQuantity, calculateTotal } from './components/cartUtils/CartUtils';
+import CartView from './components/cardView/CartView'; 
+import { addToCart, updateQuantity, calculateTotal } from './components/cart/Cart';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false); 
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = useCallback((product) => {
     setCartItems(prevItems => addToCart(prevItems, product));
-  };
+  }, []);
 
-  const handleRemoveFromCart = (id) => {
-    setCartItems(prevItems => removeFromCart(prevItems, id));
-};
-
-  const handleUpdateQuantity = (id, quantity) => {
+  const handleUpdateQuantity = useCallback((id, quantity) => {
     setCartItems(prevItems => updateQuantity(prevItems, id, quantity));
-  };
+  }, []);
 
-  const total = calculateTotal(cartItems);
+  const total = calculateTotal(cartItems); 
 
   return (
     <BrowserRouter>
@@ -31,7 +27,7 @@ function App() {
       {showCart && (
         <CartView 
           cartItems={cartItems} 
-          removeFromCart={handleRemoveFromCart} 
+          setCartItems={setCartItems} 
           updateQuantity={handleUpdateQuantity} 
           calculateTotal={total} 
         />

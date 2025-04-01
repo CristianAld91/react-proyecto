@@ -1,3 +1,4 @@
+// Cart.js
 class CartItem {
     constructor(id, nombre, precio, cantidad) {
         this.id = id;
@@ -23,17 +24,13 @@ const addToCart = (cartItems, product) => {
     return [...cartItems, newItem];
 };
 
-const removeFromCart = (cartItems, id) => {
-    return cartItems.filter(item => item.id !== id);
-};
-
 const updateQuantity = (cartItems, id, quantity) => {
     if (typeof quantity !== 'number' || quantity < 0) {
         throw new Error("La cantidad debe ser un número positivo.");
     }
 
     if (quantity < 1) {
-        return removeFromCart(cartItems, id);
+        return 
     } else {
         return cartItems.map(item =>
             item.id === id ? { ...item, cantidad: quantity } : item
@@ -45,4 +42,4 @@ const calculateTotal = (cartItems) => {
     return cartItems.reduce((total, item) => total + item.precio * item.cantidad, 0);
 };
 
-export { addToCart, removeFromCart, updateQuantity, calculateTotal, CartItem };
+export { addToCart, updateQuantity, calculateTotal, CartItem };
