@@ -29,7 +29,8 @@ function App() {
           cartItems={cartItems} 
           setCartItems={setCartItems} 
           updateQuantity={handleUpdateQuantity} 
-          calculateTotal={total} 
+          total={total} 
+          clearCart={clearCart} // Agregado aquí
         />
       )}
   

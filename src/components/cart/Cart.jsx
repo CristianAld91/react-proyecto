@@ -1,4 +1,3 @@
-// Cart.js
 class CartItem {
     constructor(id, nombre, precio, cantidad) {
         this.id = id;
@@ -30,7 +29,7 @@ const updateQuantity = (cartItems, id, quantity) => {
     }
 
     if (quantity < 1) {
-        return 
+        return cartItems.filter(item => item.id !== id); // Elimina el item si la cantidad es menor a 1
     } else {
         return cartItems.map(item =>
             item.id === id ? { ...item, cantidad: quantity } : item
@@ -42,4 +41,9 @@ const calculateTotal = (cartItems) => {
     return cartItems.reduce((total, item) => total + item.precio * item.cantidad, 0);
 };
 
-export { addToCart, updateQuantity, calculateTotal, CartItem };
+// Nueva función para reiniciar el carrito
+const resetCart = () => {
+    return []; // Devuelve un array vacío para reiniciar el carrito
+};
+
+export { addToCart, updateQuantity, calculateTotal, resetCart, CartItem };

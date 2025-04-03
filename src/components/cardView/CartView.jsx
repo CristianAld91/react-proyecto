@@ -1,29 +1,68 @@
 import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemText, IconButton, Typography, Button, TextField } from '@mui/material';
+import { Drawer, List, ListItem, ListItemText, IconButton, Typography, Button, TextField, Snackbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import CardWidget from '../carWidget/CardWidget';
-import {  calculateTotal } from '../cart/Cart';
+import { calculateTotal } from '../cart/Cart';
+import { db } from '../../firebase/client'; 
+import { collection, addDoc } from "firebase/firestore";
+import MuiAlert from '@mui/material/Alert';
 
-const CartView = ({ cartItems, updateQuantity, setCartItems }) => {
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+const CartView = ({ cartItems, updateQuantity, clearCart, removeItem }) => {
     const [cartOpen, setCartOpen] = useState(false);
     const [buyerName, setBuyerName] = useState('');
     const [buyerEmail, setBuyerEmail] = useState('');
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
     const toggleCart = () => {
         setCartOpen(!cartOpen);
     };
-
+    
     const total = calculateTotal(cartItems);
-
-    const handlePurchase = () => {
+    
+    const handlePurchase = async () => {
         if (buyerName && buyerEmail) {
-            alert(`Compra realizada por: ${buyerName}, Email: ${buyerEmail}`);
-            setCartItems([]); // Vaciar el carrito después de la compra
-            setBuyerName('');
-            setBuyerEmail('');
+            try {
+                const orderData = {
+                    buyerName,
+                    buyerEmail,
+                    items: cartItems.map(item => ({
+                        id: item.id,
+                        nombre: item.nombre,
+                        cantidad: item.cantidad,
+                        precio: item.precio,
+                    })),
+                    createdAt: new Date(),
+                };
+
+                await addDoc(collection(db, "orders"), orderData);
+                setSnackbarMessage(`Compra realizada por: ${buyerName}, Email: ${buyerEmail}`);
+                setSnackbarSeverity('success');
+                setSnackbarOpen(true);
+
+                clearCart(); // Limpia el carrito
+                setBuyerName('');
+                setBuyerEmail('');
+            } catch (error) {
+                console.error("Error al guardar la orden: ", error);
+                setSnackbarMessage('Hubo un error al procesar tu compra. Intenta nuevamente.');
+                setSnackbarSeverity('error');
+                setSnackbarOpen(true);
+            }
         } else {
-            alert('Por favor, ingresa tu nombre y correo electrónico.');
+            setSnackbarMessage('Por favor, ingresa tu nombre y correo electrónico.');
+            setSnackbarSeverity('warning');
+            setSnackbarOpen(true);
         }
+    };
+
+    const handleRemoveItem = (id) => {
+        removeItem(id); // Llama a la función para eliminar el item
     };
 
     return (
@@ -56,7 +95,7 @@ const CartView = ({ cartItems, updateQuantity, setCartItems }) => {
                                         style={{ width: '50px', marginRight: '10px' }}
                                         inputProps={{ min: 1 }}
                                     />
-                                    <Button onClick={() => (item.id)}>Eliminar</Button> 
+                                    <Button onClick={() => handleRemoveItem(item.id)}>Eliminar</Button> 
                                 </ListItem>
                             ))
                         ) : (
@@ -90,6 +129,11 @@ const CartView = ({ cartItems, updateQuantity, setCartItems }) => {
                     </Button>
                 </div>
             </Drawer>
+            <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)}>
+                <Alert onClose={() => setSnackbarOpen(false)} severity={snackbarSeverity}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
         </React.Fragment>
     );
 };
