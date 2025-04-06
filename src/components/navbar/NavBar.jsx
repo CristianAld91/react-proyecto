@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import CardWidget from '../carWidget/CardWidget';
-import CartView from '../cardView/CartView';
+import ItemQualitySelector from '../ItemQuality/ItemQualitySelector';
 import logo from '/src/assets/img/celljr.png';
 import '../navbar/navBar.css';
 import { NavLink } from 'react-router-dom';
@@ -21,7 +21,7 @@ const pages = [
   { name: 'Tablets', path: '/category/tablet' },
 ];
 
-function ResponsiveAppBar({ cartItems, removeFromCart }) {//error
+function NavBar({ cartItems, setCartItems, updateQuantity }) { // Recibir props necesarias
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [showCart, setShowCart] = React.useState(false);
 
@@ -38,6 +38,9 @@ function ResponsiveAppBar({ cartItems, removeFromCart }) {//error
   };
 
   const totalItems = (cartItems || []).reduce((acc, item) => acc + item.cantidad, 0);
+
+  // Registro para depurar props recibidas en NavBar
+  console.log("Props recibidas en NavBar:", { cartItems, setCartItems, updateQuantity });
 
   return (
     <AppBar position="fixed">
@@ -129,10 +132,15 @@ function ResponsiveAppBar({ cartItems, removeFromCart }) {//error
             <CardWidget cartItems={cartItems} />
           </IconButton>
         </Toolbar>
-        {showCart && <CartView cartItems={cartItems}/>}
+        {/* Transmitir las props necesarias al carrito */}
+        {showCart && <ItemQualitySelector 
+            cartItems={cartItems} 
+            setCartItems={setCartItems} 
+            updateQuantity={updateQuantity} 
+        />}
       </Container>
     </AppBar>
   );
 }
 
-export default ResponsiveAppBar;
+export default NavBar;

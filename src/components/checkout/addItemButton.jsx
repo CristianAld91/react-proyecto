@@ -1,77 +1,21 @@
-import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemText, IconButton, Typography, Button, TextField, Snackbar } from '@mui/material';
+import React from 'react';
+import { IconButton, Drawer, List, ListItem, ListItemText, TextField, Button, Snackbar, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import CardWidget from '../carWidget/CardWidget';
-import { calculateTotal } from '../cart/Cart';
-import { db } from '../../firebase/client'; 
-import { collection, addDoc } from "firebase/firestore";
 import MuiAlert from '@mui/material/Alert';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const CartView = ({ cartItems, updateQuantity, clearCart, removeItem }) => {
-    const [cartOpen, setCartOpen] = useState(false);
-    const [buyerName, setBuyerName] = useState('');
-    const [buyerEmail, setBuyerEmail] = useState('');
-    const [snackbarOpen, setSnackbarOpen] = useState(false);
-    const [snackbarMessage, setSnackbarMessage] = useState('');
-    const [snackbarSeverity, setSnackbarSeverity] = useState('success');
-
-    const toggleCart = () => {
-        setCartOpen(!cartOpen);
-    };
-    
-    const total = calculateTotal(cartItems);
-    
-    const handlePurchase = async () => {
-        if (buyerName && buyerEmail) {
-            try {
-                const orderData = {
-                    buyerName,
-                    buyerEmail,
-                    items: cartItems.map(item => ({
-                        id: item.id,
-                        nombre: item.nombre,
-                        cantidad: item.cantidad,
-                        precio: item.precio,
-                    })),
-                    createdAt: new Date(),
-                };
-
-                await addDoc(collection(db, "orders"), orderData);
-                setSnackbarMessage(`Compra realizada por: ${buyerName}, Email: ${buyerEmail}`);
-                setSnackbarSeverity('success');
-                setSnackbarOpen(true);
-
-                clearCart(); // Limpia el carrito
-                setBuyerName('');
-                setBuyerEmail('');
-            } catch (error) {
-                console.error("Error al guardar la orden: ", error);
-                setSnackbarMessage('Hubo un error al procesar tu compra. Intenta nuevamente.');
-                setSnackbarSeverity('error');
-                setSnackbarOpen(true);
-            }
-        } else {
-            setSnackbarMessage('Por favor, ingresa tu nombre y correo electrónico.');
-            setSnackbarSeverity('warning');
-            setSnackbarOpen(true);
-        }
-    };
-
-    const handleRemoveItem = (id) => {
-        removeItem(id); // Llama a la función para eliminar el item
-    };
-
+const CartButtons = ({ cartOpen, cartItems, updateQuantity, handlePurchase, toggleCart, total, buyerName, setBuyerName, buyerEmail, setBuyerEmail, snackbarOpen, setSnackbarOpen, snackbarMessage, snackbarSeverity, removeItem, clearCart }) => {
     return (
         <React.Fragment>
             <IconButton onClick={toggleCart}>
                 <CardWidget cartItems={cartItems} />
             </IconButton>
             <Drawer anchor="right" open={cartOpen} onClose={toggleCart}>
-                <div style={{ width: 250 }}>
+                <div style={{ width: 400 }}>
                     <IconButton onClick={toggleCart}>
                         <CloseIcon />
                     </IconButton>
@@ -92,10 +36,15 @@ const CartView = ({ cartItems, updateQuantity, clearCart, removeItem }) => {
                                                 updateQuantity(item.id, quantity);
                                             }
                                         }}
-                                        style={{ width: '50px', marginRight: '10px' }}
-                                        inputProps={{ min: 1 }}
                                     />
-                                    <Button onClick={() => handleRemoveItem(item.id)}>Eliminar</Button> 
+                                    <Button 
+                                        variant="outlined" 
+                                        color="secondary" 
+                                        onClick={() => removeItem(item.id)} 
+                                        style={{ marginLeft: '10px' }}
+                                    >
+                                        Eliminar
+                                    </Button>
                                 </ListItem>
                             ))
                         ) : (
@@ -127,6 +76,15 @@ const CartView = ({ cartItems, updateQuantity, clearCart, removeItem }) => {
                     >
                         Comprar
                     </Button>
+                    <Button 
+                        variant="outlined" 
+                        color="secondary" 
+                        onClick={clearCart} 
+                        fullWidth 
+                        style={{ marginTop: '10px' }}
+                    >
+                        Borrar Todos
+                    </Button>
                 </div>
             </Drawer>
             <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)}>
@@ -138,4 +96,4 @@ const CartView = ({ cartItems, updateQuantity, clearCart, removeItem }) => {
     );
 };
 
-export default CartView;
+export default CartButtons;

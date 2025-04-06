@@ -1,3 +1,4 @@
+
 class CartItem {
     constructor(id, nombre, precio, cantidad) {
         this.id = id;
@@ -41,9 +42,9 @@ const calculateTotal = (cartItems) => {
     return cartItems.reduce((total, item) => total + item.precio * item.cantidad, 0);
 };
 
-// Nueva función para reiniciar el carrito
-const resetCart = () => {
-    return []; // Devuelve un array vacío para reiniciar el carrito
+// Nueva función para vaciar el carrito
+const clearCart = () => {
+    return []; // Reinicia el carrito
 };
 
-export { addToCart, updateQuantity, calculateTotal, resetCart, CartItem };
+export { addToCart, updateQuantity, calculateTotal, CartItem, clearCart };

@@ -1,5 +1,4 @@
-// components/itemListContainer/ItemListContainer.js
-import React, { useEffect, useState } from 'react';
+
 import useFetch from '../customHooks/useFetch'; 
 import ItemList from '../itemList/ItemList';
 import { useParams } from 'react-router-dom';
