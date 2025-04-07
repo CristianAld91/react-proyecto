@@ -21,7 +21,7 @@ const pages = [
   { name: 'Tablets', path: '/category/tablet' },
 ];
 
-function NavBar({ cartItems, setCartItems, updateQuantity }) { // Recibir props necesarias
+function NavBar({ cartItems, setCartItems, updateQuantity }) { //props necesarias
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [showCart, setShowCart] = React.useState(false);
 
@@ -39,7 +39,7 @@ function NavBar({ cartItems, setCartItems, updateQuantity }) { // Recibir props 
 
   const totalItems = (cartItems || []).reduce((acc, item) => acc + item.cantidad, 0);
 
-  // Registro para depurar props recibidas en NavBar
+  //depurar props recibidas en NavBar
   console.log("Props recibidas en NavBar:", { cartItems, setCartItems, updateQuantity });
 
   return (
@@ -132,7 +132,7 @@ function NavBar({ cartItems, setCartItems, updateQuantity }) { // Recibir props 
             <CardWidget cartItems={cartItems} />
           </IconButton>
         </Toolbar>
-        {/* Transmitir las props necesarias al carrito */}
+        {/*props necesarias al carrito */}
         {showCart && <ItemQualitySelector 
             cartItems={cartItems} 
             setCartItems={setCartItems} 

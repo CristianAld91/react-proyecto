@@ -47,7 +47,7 @@ const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
 
                 // Vaciar el carrito después de la compra
                 if (typeof setCartItems === "function") {
-                    setCartItems(clearCart()); // Usar la función clearCart para vaciar el carrito
+                    setCartItems(clearCart()); // clearCart para vaciar el carrito
                     console.log("Carrito vacío tras la compra");
                 } else {
                     console.error("Error: setCartItems no es una función válida.");
@@ -68,7 +68,7 @@ const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
         }
     };
 
-    // Remover un ítem específico
+    // Remover un item 
     const removeItem = (itemId) => {
         if (typeof setCartItems === "function") {
             setCartItems((prevItems) => prevItems.filter(item => item.id !== itemId));
@@ -81,7 +81,7 @@ const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
     // Vaciar el carrito
     const clearCartHandler = () => {
         if (typeof setCartItems === "function") {
-            setCartItems(clearCart()); // Usar función clearCart para reiniciar el carrito
+            setCartItems(clearCart()); // clearCart para reiniciar el carrito
             console.log("Carrito vacío tras ejecutar clearCartHandler");
         } else {
             console.error("Error: setCartItems no es una función válida.");

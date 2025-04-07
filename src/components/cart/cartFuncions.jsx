@@ -42,7 +42,7 @@ const calculateTotal = (cartItems) => {
     return cartItems.reduce((total, item) => total + item.precio * item.cantidad, 0);
 };
 
-// Nueva función para vaciar el carrito
+//función para vaciar el carrito
 const clearCart = () => {
     return []; // Reinicia el carrito
 };

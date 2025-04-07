@@ -89,3 +89,23 @@ input:disabled {
   border-color: #ccc; 
   cursor: not-allowed;
 }
+
+.cargador-container {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  height: 100vh; /* Ocupar toda la altura de la ventana */
+  position: fixed; /* Cambiar a fixed para que siempre esté centrado en la ventana */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupar todo el ancho */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente (opcional) */
+  z-index: 999; /* Asegurarse de que esté por encima de otros componentes */
+}
+
+/* Animaciones */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

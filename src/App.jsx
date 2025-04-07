@@ -6,6 +6,7 @@ import ItemListContainer from './components/itemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import ItemQualitySelector from './components/ItemQuality/ItemQualitySelector';
 import { addToCart, updateQuantity, calculateTotal } from './components/cart/cartFuncions';
+import Footer from '../src/assets/footer/footer';
 
 function App() {
   const [cartItems, setCartItems] = useState([]); // Estado del carrito
@@ -24,16 +25,16 @@ function App() {
   // Calcular total del carrito
   const total = calculateTotal(cartItems);
 
-  // Depuración: Verificar las props enviadas
+  //Verificar las props enviadas
   console.log("Estado y funciones enviadas desde App.jsx:", { cartItems, setCartItems, handleUpdateQuantity });
 
   return (
     <BrowserRouter>
-      {/* NavBar: Enviar estado del carrito y funciones */}
+      {/* NavBar */}
       <NavBar 
         cartItems={cartItems} 
-        setCartItems={setCartItems} // Enviar setCartItems a NavBar
-        updateQuantity={handleUpdateQuantity} // Enviar handleUpdateQuantity a NavBar
+        setCartItems={setCartItems} 
+        updateQuantity={handleUpdateQuantity} 
         toggleCart={() => setShowCart(!showCart)} 
       />
 
@@ -41,7 +42,7 @@ function App() {
       {showCart && (
         <ItemQualitySelector 
           cartItems={cartItems} 
-          setCartItems={setCartItems} // Transmitir setCartItems como prop
+          setCartItems={setCartItems} 
           updateQuantity={handleUpdateQuantity} 
         />
       )}
@@ -79,6 +80,9 @@ function App() {
           element={<ItemListContainer addToCart={handleAddToCart} />} 
         />
       </Routes>
+
+      {/* Footer */}
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -27,8 +27,13 @@ const ItemDetailContainer = ({ addToCart }) => {
     }, [id]);
 
     if (loading) {
-        return <CircularProgress />;
+        return (
+            <div className='cargador-container'>
+                <div className='cargador'></div> {/* Asegúrate de que esta clase esté definida en tu CSS */}
+            </div>
+        );
     }
+
 
     const increment = () => {
         if (quantity < producto.stock) {
@@ -88,13 +93,13 @@ const ItemDetailContainer = ({ addToCart }) => {
                         </Typography>
                         <div className="quantity-controls">
                             <Button onClick={decrement}>-</Button>
-                            <input 
-                                type="number" 
-                                min="1" 
-                                max={producto.stock} 
-                                value={quantity} 
-                                readOnly 
-                                aria-label={`Cantidad de ${producto.nombre}`} 
+                            <input
+                                type="number"
+                                min="1"
+                                max={producto.stock}
+                                value={quantity}
+                                readOnly
+                                aria-label={`Cantidad de ${producto.nombre}`}
                             />
                             <Button onClick={increment}>+</Button>
                         </div>
