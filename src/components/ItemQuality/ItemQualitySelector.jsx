@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { calculateTotal, clearCart } from '../cart/cartFuncions';
+import { calculateTotal, clearCart } from '../itemDetail/CartContext';
 import { db } from '../../firebase/client';
 import { collection, addDoc } from "firebase/firestore";
-import CartButtons from '../checkout/addItemButton';
+import CartButtons from '../itemDetail/addItemButton';
 
 const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
     // Registro para verificar props recibidas
@@ -18,11 +18,11 @@ const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
     // Alternar la apertura del carrito
     const toggleCart = () => {
         setCartOpen(!cartOpen);
-        console.log("Estado de cartOpen:", cartOpen);
+        console.log("Estado de cartOpen:", cartOpen); // ver estado de  cart
     };
 
     const total = calculateTotal(cartItems);
-    console.log("Total calculado:", total);
+    console.log("Total calculado:", total); // ver si se envia correctamente el valor total
 
     // Manejar la compra
     const handlePurchase = async () => {
@@ -48,7 +48,7 @@ const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
                 // Vaciar el carrito después de la compra
                 if (typeof setCartItems === "function") {
                     setCartItems(clearCart()); // clearCart para vaciar el carrito
-                    console.log("Carrito vacío tras la compra");
+                    console.log("Carrito vacío tras la compra"); // estado de carrtio luego de comprar
                 } else {
                     console.error("Error: setCartItems no es una función válida.");
                 }
@@ -72,7 +72,7 @@ const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
     const removeItem = (itemId) => {
         if (typeof setCartItems === "function") {
             setCartItems((prevItems) => prevItems.filter(item => item.id !== itemId));
-            console.log(`Ítem con ID ${itemId} eliminado`);
+            console.log(`Ítem con ID ${itemId} eliminado`); // el item se elimino correctamente?
         } else {
             console.error("Error: setCartItems no es una función válida.");
         }
@@ -82,7 +82,7 @@ const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
     const clearCartHandler = () => {
         if (typeof setCartItems === "function") {
             setCartItems(clearCart()); // clearCart para reiniciar el carrito
-            console.log("Carrito vacío tras ejecutar clearCartHandler");
+            console.log("Carrito vacío tras ejecutar clearCartHandler"); // verificar si se vacio correctamente
         } else {
             console.error("Error: setCartItems no es una función válida.");
         }
@@ -90,7 +90,7 @@ const ItemQualitySelector = ({ cartItems, setCartItems, updateQuantity }) => {
 
     // Monitoriza cambios en cartItems
     useEffect(() => {
-        console.log("Estado del carrito actualizado (useEffect):", cartItems);
+        console.log("Estado del carrito actualizado (useEffect):", cartItems); // parte de la depuracion
     }, [cartItems]);
 
     return (

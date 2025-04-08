@@ -29,7 +29,7 @@ const ItemDetailContainer = ({ addToCart }) => {
     if (loading) {
         return (
             <div className='cargador-container'>
-                <div className='cargador'></div> {/* Asegúrate de que esta clase esté definida en tu CSS */}
+                <div className='cargador'></div> 
             </div>
         );
     }
@@ -57,7 +57,7 @@ const ItemDetailContainer = ({ addToCart }) => {
     };
 
     return (
-        <div className="container">
+        <div className="container"> {/* estilos de cart cuando se ingresa por item de material*/}
             {producto ? (
                 <Card className="card">
                     <CardMedia

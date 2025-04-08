@@ -1,5 +1,5 @@
 #root {
-  width: 100%; /* Asegúrate de que ocupe todo el ancho */
+  width: 100%;
   max-width: none; /* Eliminar el límite de ancho */
   margin: 0 auto; /* Centrar el contenedor */
   padding: 2rem; /* Mantener el padding */

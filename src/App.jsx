@@ -5,8 +5,8 @@ import NavBar from './components/navbar/NavBar';
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import ItemQualitySelector from './components/ItemQuality/ItemQualitySelector';
-import { addToCart, updateQuantity, calculateTotal } from './components/cart/cartFuncions';
-import Footer from '../src/assets/footer/footer';
+import { addToCart, updateQuantity, calculateTotal } from './components/itemDetail/CartContext';
+import Footer from './components/footer/footer';
 
 function App() {
   const [cartItems, setCartItems] = useState([]); // Estado del carrito
@@ -38,7 +38,7 @@ function App() {
         toggleCart={() => setShowCart(!showCart)} 
       />
 
-      {/* Renderizar ItemQualitySelector solo si el carrito está visible */}
+      {/* Renderizar ItemQualitySelector solo si el carrito esta visible */}
       {showCart && (
         <ItemQualitySelector 
           cartItems={cartItems} 
@@ -47,22 +47,22 @@ function App() {
         />
       )}
 
-      {/* Configurar rutas */}
+      {/* rutas */}
       <Routes>
-        {/* Página principal */}
+        {/* Pagina principal */}
         <Route 
           exact 
           path="/" 
           element={<ItemListContainer addToCart={handleAddToCart} />} 
         />
 
-        {/* Categorías */}
+        {/* Categorias */}
         <Route 
           path="/category/:categoryId" 
           element={<ItemListContainer addToCart={handleAddToCart} />} 
         />
 
-        {/* Detalles de ítems */}
+        {/* Detalles de items */}
         <Route 
           path="/item/:id" 
           element={<ItemDetailContainer addToCart={handleAddToCart} />} 
@@ -74,7 +74,7 @@ function App() {
           element={<ItemListContainer addToCart={handleAddToCart} />} 
         />
         
-        {/* Categoría celulares */}
+        {/* Categoria celulares */}
         <Route 
           path="/category/celulares" 
           element={<ItemListContainer addToCart={handleAddToCart} />} 

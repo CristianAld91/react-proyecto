@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Link } from '@mui/material';
 import './Footer.css'; 
-import logo from '../img/celljr.png';
+import logo from '../../assets/img/celljr.png';
 
 const Footer = () => {
   return (
@@ -9,8 +9,12 @@ const Footer = () => {
       <img src={logo} alt="Logo" className="footer-logo" /> 
     
       <Typography variant="body2" gutterBottom>
-        © {new Date().getFullYear()} Developed by: <strong>Cristian Alderete</strong> | <span className="company-name">Cell jr.s.a.</span>  Todos los derechos reservados.
+        <span className="company-name">© {new Date().getFullYear()} Cell jr.</span> Todos los derechos reservados.
       </Typography>
+      <Typography variant="body2" gutterBottom>
+        Desarrollado por: <strong>Cristian Alderete</strong>
+      </Typography>
+      
       <Box>
         <Link href="#" className="footer-link">Términos de Servicio</Link>
         <Link href="#" className="footer-link">Política de Privacidad</Link>

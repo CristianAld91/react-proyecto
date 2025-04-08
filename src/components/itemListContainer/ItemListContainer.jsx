@@ -6,11 +6,11 @@ import '../itemListContainer/itemListContainer.css'
 
 const ItemListContainer = ({ addToCart }) => {
   const { categoryId } = useParams(); 
-  const { data, loading, error } = useFetch('products'); // Cambia a "products"
+  const { data, loading, error } = useFetch('products'); // cambio de nombre al pasar a firebase
   if (loading) {
     return (
       <div className='cargador-container'>
-        <div className='cargador'></div> {/* Asegúrate de que esta clase esté definida en tu CSS */}
+        <div className='cargador'></div>
       </div>
     );
   }
