@@ -57,4 +57,4 @@ La aplicación utiliza **React Router** para manejar la navegación entre difere
 
 ## Conclusión
 
-Este proyecto es un ejemplo básico de cómo construir una aplicación de comercio electrónico utilizando **React**, gestionando el estado del carrito y la navegación de manera efectiva.
+Este proyecto es un ejemplo básico de cómo construir una aplicación de Ecommerce utilizando **React**, gestionando el estado del carrito y la navegación de manera efectiva.
